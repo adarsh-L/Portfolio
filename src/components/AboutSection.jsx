@@ -1,7 +1,7 @@
 import { motion } from 'framer-motion'
 
 /* ─── Hexagon with real profile image ─── */
-function HexAvatar({ size = 280 }) {
+function HexAvatar({ size = 240 }) {
     return (
         <div className="float-y flex-shrink-0" style={{ width: size, height: size * 1.1 }}>
             <div className="hex-border" style={{ width: '100%', height: '100%' }}>
@@ -54,17 +54,19 @@ export default function AboutSection() {
         <div className="section-wrap">
             <div className="container">
 
-                {/* Two-column grid */}
-                <div style={{ display: 'grid', gridTemplateColumns: 'auto 1fr', gap: '64px', alignItems: 'center' }}>
+                {/* Responsive two-column grid */}
+                <div className="about-grid">
 
-                    {/* Left: Hexagon image */}
-                    <motion.div initial={{ opacity: 0, x: -28 }} animate={{ opacity: 1, x: 0 }} transition={{ duration: 0.65 }}>
-                        <HexAvatar size={260} />
+                    {/* Avatar – centered on mobile, left-aligned on desktop */}
+                    <motion.div
+                        initial={{ opacity: 0, x: -28 }} animate={{ opacity: 1, x: 0 }} transition={{ duration: 0.65 }}
+                        style={{ display: 'flex', justifyContent: 'center' }}
+                    >
+                        <HexAvatar size={220} />
                     </motion.div>
 
                     {/* Right: content */}
                     <div>
-                        {/* Heading – no "MEET ME" eyebrow */}
                         <motion.h2 {...fade(0)} className="section-heading" style={{ marginBottom: 6 }}>
                             About <span className="gradient-text">Me</span>
                         </motion.h2>
@@ -87,7 +89,7 @@ export default function AboutSection() {
                             <div style={{ display: 'flex', flexDirection: 'column', gap: 12 }}>
                                 {EDUCATION.map((e) => (
                                     <div key={e.college} className="card"
-                                        style={{ padding: '18px 20px', display: 'flex', justifyContent: 'space-between', alignItems: 'center', gap: 16 }}>
+                                        style={{ padding: '16px 20px', display: 'flex', justifyContent: 'space-between', alignItems: 'flex-start', gap: 12, flexWrap: 'wrap' }}>
                                         <div>
                                             <p style={{ fontFamily: 'Space Grotesk', fontWeight: 700, fontSize: '0.88rem', color: 'var(--text)' }}>
                                                 {e.college}
@@ -96,14 +98,13 @@ export default function AboutSection() {
                                                 {e.course}
                                             </p>
                                         </div>
-                                        <p style={{ fontSize: '0.78rem', color: 'var(--glow)', fontFamily: 'Space Grotesk', fontWeight: 600, flexShrink: 0 }}>
+                                        <p style={{ fontSize: '0.78rem', color: 'var(--glow)', fontFamily: 'Space Grotesk', fontWeight: 600, flexShrink: 0, marginTop: 2 }}>
                                             {e.duration}
                                         </p>
                                     </div>
                                 ))}
                             </div>
                         </motion.div>
-                        {/* No Core Skills, no Download CV */}
                     </div>
                 </div>
             </div>

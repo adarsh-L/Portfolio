@@ -8,95 +8,109 @@ const PUBLICATION = {
     description: 'An IoT-based real-time system to monitor water levels at bridges and flood-prone zones using ESP32 sensors, MQTT protocol, and a cloud dashboard with SMS/email alerts.',
     abstract: 'Rising water levels at bridges and flood zones pose significant infrastructure and life-safety risks. This paper presents a cost-effective remote monitoring system leveraging IoT sensors (ultrasonic + water-level), ESP32 microcontrollers, MQTT protocol, and a cloud dashboard. Evaluated across three bridge sites, the system demonstrated 98% alert accuracy with latency under 2 seconds.',
     keywords: ['IoT', 'MQTT', 'Real-time Monitoring', 'Flood Detection', 'ESP32', 'IEEE 2025'],
+    link: 'https://scholar.google.com/citations?view_op=view_citation&hl=en&user=WecoMWQAAAAJ&citation_for_view=WecoMWQAAAAJ:d1gkVwhDpl0C',
 }
 
 export default function ResearchSection() {
     const [expanded, setExpanded] = useState(false)
 
     return (
-        <div
-            className="w-full min-h-screen flex items-center justify-center"
-            style={{ background: 'linear-gradient(135deg, var(--bg-1) 0%, var(--bg-2) 100%)' }}
-        >
-            <div className="w-full max-w-3xl mx-auto px-8 py-28">
+        <div className="section-wrap">
+            <div className="container">
 
                 {/* Heading */}
                 <motion.div
                     initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.6 }}
-                    className="text-center mb-14"
+                    style={{ marginBottom: 36 }}
                 >
-                    <p className="section-subtitle mb-3">Published Work</p>
-                    <h2 className="section-title">Research &amp; <span className="gradient-text">Publications</span></h2>
+                    <p className="section-eyebrow" style={{ marginBottom: 8 }}>Published Work</p>
+                    <h2 className="section-heading">
+                        Research &amp; <span className="gradient-text">Publications</span>
+                    </h2>
                 </motion.div>
 
                 {/* Card */}
                 <motion.div
                     initial={{ opacity: 0, y: 24 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.65, delay: 0.15 }}
-                    className="glass rounded-2xl overflow-hidden no-advance"
-                    style={{ borderColor: 'rgba(0,247,255,0.2)' }}
+                    className="card no-advance"
+                    style={{ borderColor: 'rgba(0,247,255,0.2)', overflow: 'hidden' }}
                 >
-                    {/* Header button */}
+                    {/* Collapsible header */}
                     <button
-                        className="w-full text-left px-8 py-6 flex items-start gap-5 group no-advance"
+                        className="no-advance"
                         onClick={(e) => { e.stopPropagation(); setExpanded(v => !v) }}
+                        style={{
+                            width: '100%', textAlign: 'left', padding: '24px 28px',
+                            display: 'flex', alignItems: 'flex-start', gap: 16,
+                            background: 'transparent', border: 'none', cursor: 'pointer',
+                        }}
                     >
                         <div
-                            className="flex-shrink-0 w-12 h-12 rounded-xl flex items-center justify-center text-2xl"
-                            style={{ background: 'rgba(0,247,255,0.08)', border: '1px solid rgba(0,247,255,0.22)' }}
+                            style={{
+                                flexShrink: 0, width: 48, height: 48, borderRadius: 12,
+                                display: 'flex', alignItems: 'center', justifyContent: 'center', fontSize: '1.4rem',
+                                background: 'rgba(0,247,255,0.08)', border: '1px solid rgba(0,247,255,0.22)',
+                            }}
                         >
                             📄
                         </div>
-                        <div className="flex-1 min-w-0">
-                            <div className="flex flex-wrap gap-2 mb-2">
-                                <span className="tag-chip" style={{ background: 'rgba(0,247,255,0.1)', borderColor: 'rgba(0,247,255,0.3)', color: 'var(--glow-cyan)' }}>
+                        <div style={{ flex: 1, minWidth: 0 }}>
+                            <div style={{ display: 'flex', flexWrap: 'wrap', gap: 8, marginBottom: 10 }}>
+                                <span className="tag" style={{ background: 'rgba(0,247,255,0.1)', borderColor: 'rgba(0,247,255,0.3)', color: 'var(--glow)' }}>
                                     {PUBLICATION.conference}
                                 </span>
-                                <span className="tag-chip">{PUBLICATION.year}</span>
+                                <span className="tag">{PUBLICATION.year}</span>
                             </div>
-                            <h3 className="font-['Space_Grotesk'] font-semibold text-base leading-snug transition-colors duration-300"
-                                style={{ color: 'var(--text-primary)' }}
-                                onMouseEnter={e => e.currentTarget.style.color = 'var(--glow-cyan)'}
-                                onMouseLeave={e => e.currentTarget.style.color = 'var(--text-primary)'}
-                            >
+                            <h3 style={{ fontFamily: 'Space Grotesk', fontWeight: 600, fontSize: '0.95rem', lineHeight: 1.45, color: 'var(--text)', marginBottom: 8 }}>
                                 {PUBLICATION.title}
                             </h3>
-                            <p className="text-sm mt-2 leading-relaxed" style={{ color: 'var(--text-muted)' }}>
+                            <p className="body-text" style={{ fontSize: '0.82rem' }}>
                                 {PUBLICATION.description}
                             </p>
                         </div>
                         <motion.span
                             animate={{ rotate: expanded ? 180 : 0 }} transition={{ duration: 0.3 }}
-                            className="flex-shrink-0 text-lg mt-1"
-                            style={{ color: 'var(--text-muted)' }}
+                            style={{ flexShrink: 0, fontSize: '1.1rem', color: 'var(--text-muted)', marginTop: 4 }}
                         >
                             ↓
                         </motion.span>
                     </button>
 
-                    {/* Expandable */}
+                    {/* Expandable abstract */}
                     <AnimatePresence>
                         {expanded && (
                             <motion.div
                                 initial={{ height: 0, opacity: 0 }} animate={{ height: 'auto', opacity: 1 }}
                                 exit={{ height: 0, opacity: 0 }} transition={{ duration: 0.38, ease: 'easeInOut' }}
-                                className="overflow-hidden"
+                                style={{ overflow: 'hidden' }}
                             >
-                                <div className="px-8 pb-8 pt-5" style={{ borderTop: '1px solid var(--border)' }}>
-                                    <h4 className="text-xs font-['Space_Grotesk'] uppercase tracking-widest mb-3"
-                                        style={{ color: 'var(--text-muted)' }}>Abstract</h4>
-                                    <p className="text-sm leading-relaxed mb-6" style={{ color: 'var(--text-primary)', opacity: 0.82 }}>
+                                <div style={{ padding: '20px 28px 28px', borderTop: '1px solid var(--border)' }}>
+                                    <p style={{ fontSize: '0.7rem', fontFamily: 'Space Grotesk', textTransform: 'uppercase', letterSpacing: '0.15em', color: 'var(--text-muted)', marginBottom: 10 }}>
+                                        Abstract
+                                    </p>
+                                    <p style={{ fontSize: '0.875rem', lineHeight: 1.75, color: 'var(--text)', opacity: 0.85, marginBottom: 20 }}>
                                         {PUBLICATION.abstract}
                                     </p>
-                                    <h4 className="text-xs font-['Space_Grotesk'] uppercase tracking-widest mb-3"
-                                        style={{ color: 'var(--text-muted)' }}>Keywords</h4>
-                                    <div className="flex flex-wrap gap-2 mb-6">
-                                        {PUBLICATION.keywords.map(kw => <span key={kw} className="tag-chip">{kw}</span>)}
+
+                                    <p style={{ fontSize: '0.7rem', fontFamily: 'Space Grotesk', textTransform: 'uppercase', letterSpacing: '0.15em', color: 'var(--text-muted)', marginBottom: 10 }}>
+                                        Keywords
+                                    </p>
+                                    <div style={{ display: 'flex', flexWrap: 'wrap', gap: 8, marginBottom: 20 }}>
+                                        {PUBLICATION.keywords.map(kw => <span key={kw} className="tag">{kw}</span>)}
                                     </div>
-                                    <div className="flex items-center gap-2">
-                                        <div className="w-2 h-2 rounded-full glow-pulse" style={{ background: 'var(--glow-cyan)' }} />
-                                        <span className="text-xs font-['Space_Grotesk'] font-medium" style={{ color: 'var(--glow-cyan)' }}>
-                                            IEEE Published — ICKECS 2025
-                                        </span>
+
+                                    <div style={{ display: 'flex', alignItems: 'center', gap: 10, flexWrap: 'wrap' }}>
+                                        <div style={{ display: 'flex', alignItems: 'center', gap: 6 }}>
+                                            <div className="glow-pulse" style={{ width: 7, height: 7, borderRadius: '50%', background: 'var(--glow)' }} />
+                                            <span style={{ fontSize: '0.73rem', fontFamily: 'Space Grotesk', fontWeight: 600, color: 'var(--glow)' }}>
+                                                IEEE Published — ICKECS 2025
+                                            </span>
+                                        </div>
+                                        <a href={PUBLICATION.link} target="_blank" rel="noopener noreferrer"
+                                            className="btn btn-outline no-advance" onClick={e => e.stopPropagation()}
+                                            style={{ fontSize: '0.78rem', padding: '9px 20px' }}>
+                                            View on Scholar →
+                                        </a>
                                     </div>
                                 </div>
                             </motion.div>
@@ -106,8 +120,7 @@ export default function ResearchSection() {
 
                 <motion.p
                     initial={{ opacity: 0 }} animate={{ opacity: 1 }} transition={{ duration: 0.6, delay: 0.4 }}
-                    className="text-center text-xs mt-8 font-['Space_Grotesk']"
-                    style={{ color: 'var(--text-muted)' }}
+                    style={{ fontSize: '0.76rem', fontFamily: 'Space Grotesk', color: 'var(--text-muted)', marginTop: 20, opacity: 0.6 }}
                 >
                     More research underway — exploring Quantum ML &amp; Edge AI
                 </motion.p>

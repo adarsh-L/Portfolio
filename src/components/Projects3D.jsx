@@ -194,7 +194,7 @@ export default function Projects3D() {
                     <p className="body-text" style={{ marginBottom: 36 }}>Click any card for full architecture details</p>
                 </motion.div>
 
-                <div style={{ display: 'grid', gridTemplateColumns: 'repeat(2, 1fr)', gap: 24 }}>
+                <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(280px, 1fr))', gap: 24 }}>
                     {PROJECTS.map((p, i) => (
                         <motion.div key={p.id} initial={{ opacity: 0, y: 22 }} animate={{ opacity: 1, y: 0 }} transition={{ delay: i * 0.1, duration: 0.5 }}>
                             <ProjectCard project={p} onClick={() => setSelected(p)} />

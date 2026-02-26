@@ -75,13 +75,14 @@ export default function HeroScene({ onNavigate }) {
         <div className="section-wrap relative">
             <ParticleCanvas />
             <div className="container relative z-10">
-                <div style={{ display: 'grid', gridTemplateColumns: '1fr auto', alignItems: 'center', gap: 64 }}>
+                {/* Responsive hero layout */}
+                <div className="hero-grid">
 
-                    {/* Left */}
+                    {/* Left: text content */}
                     <div>
                         <motion.p {...stagger(0)} className="section-eyebrow" style={{ marginBottom: 14 }}>Hello, It's Me</motion.p>
 
-                        <motion.h1 {...stagger(1)} style={{ fontFamily: 'Space Grotesk', fontWeight: 700, fontSize: 'clamp(2.8rem, 5vw, 4.2rem)', color: 'var(--text)', letterSpacing: '-0.03em', lineHeight: 1.07, marginBottom: 12 }}>
+                        <motion.h1 {...stagger(1)} style={{ fontFamily: 'Space Grotesk', fontWeight: 700, fontSize: 'clamp(2.4rem, 5vw, 4.2rem)', color: 'var(--text)', letterSpacing: '-0.03em', lineHeight: 1.07, marginBottom: 12 }}>
                             Adarsh <span className="gradient-text">L</span>
                         </motion.h1>
 
@@ -112,9 +113,13 @@ export default function HeroScene({ onNavigate }) {
                         </motion.div>
                     </div>
 
-                    {/* Right: Hexagon */}
-                    <motion.div initial={{ opacity: 0, scale: 0.82 }} animate={{ opacity: 1, scale: 1 }} transition={{ delay: 0.3, duration: 0.7 }} className="hidden md:block">
-                        <HexAvatar size={280} />
+                    {/* Right: Hexagon avatar */}
+                    <motion.div
+                        initial={{ opacity: 0, scale: 0.82 }} animate={{ opacity: 1, scale: 1 }}
+                        transition={{ delay: 0.3, duration: 0.7 }}
+                        className="hero-avatar"
+                    >
+                        <HexAvatar size={260} />
                     </motion.div>
                 </div>
             </div>

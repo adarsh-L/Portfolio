@@ -33,7 +33,7 @@ export default function CertificationsSection() {
                     </h2>
                 </motion.div>
 
-                <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: 24 }}>
+                <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(280px, 1fr))', gap: 24 }}>
 
                     {/* ── Left: Certifications ── */}
                     <div>

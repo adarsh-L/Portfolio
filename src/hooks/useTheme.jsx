@@ -4,12 +4,12 @@ const ThemeContext = createContext(null)
 
 export function ThemeProvider({ children }) {
     const [theme, setTheme] = useState(() => {
-        return localStorage.getItem('ai-core-theme') || 'dark'
+        return localStorage.getItem('adarsh-portfolio-theme') || 'dark'
     })
 
     useEffect(() => {
         document.documentElement.setAttribute('data-theme', theme)
-        localStorage.setItem('ai-core-theme', theme)
+        localStorage.setItem('adarsh-portfolio-theme', theme)
     }, [theme])
 
     const toggle = () => setTheme(t => t === 'dark' ? 'light' : 'dark')
